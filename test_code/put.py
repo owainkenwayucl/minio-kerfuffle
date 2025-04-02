@@ -25,7 +25,6 @@ logging.info(f"Running {configfile} at {instance} ")
 boto3.set_stream_logger('', logging.DEBUG)
 
 filepath = "payload.txt"
-objectname = f"{objectname}-instance"
 
 s3client = boto3.client(
     "s3",
@@ -36,3 +35,4 @@ s3client = boto3.client(
 )
 
 s3client.upload_file(filepath, bucketname, objectname)
+print(f"Uploaded {filepath} to {bucketname}/{objectname}.")
